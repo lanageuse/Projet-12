@@ -1,5 +1,5 @@
-function Home(){
-    return(
+function Home() {
+    return (
         <div>home</div>
     )
 }
