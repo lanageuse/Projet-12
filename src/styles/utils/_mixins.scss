@@ -1,0 +1,51 @@
+@use 'sass:map';
+@use './variables' as *;
+
+/// Dégradé linéaire personnalisé
+/// @example @include bg-gradient;
+@mixin bg-gradient {
+  background: linear-gradient(358deg, $pink-dark-color -49.44%, $pink-light-color 153.93%);
+}
+
+/// Génère une ombre personnalisée
+/// @param {Number} $x - Décalage horizontal (en px)
+/// @param {Number} $y - Décalage vertical (en px)
+/// @param {Number} $blur - Rayon de flou (en px)
+/// @param {Number} $opacity - Opacité (0 à 1)
+/// @param {Color} $color [$text-color] - Couleur (en rgb)
+@mixin box-shadow($x, $y, $blur, $opacity, $color: $text-color) {
+  box-shadow: #{$x}px #{$y}px #{$blur}px rgba($color, $opacity);
+}
+
+/// Animation fade-in
+/// @param {Time} $duration [0.5s] - Durée
+/// @param {String} $animation-name [fade-in] - Nom de l’animation
+@mixin fade-in-animation($duration: 0.5s, $animation-name: fade-in) {
+  display: inline-block;
+  animation: $animation-name $duration cubic-bezier(0.83, -0.02, 0.44, 1.33) forwards;
+}
+
+/// Mixin media query à partir d’un breakpoint défini
+/// @param {String} $size - Clé de $breakpoints
+@mixin breakpoint($size) {
+  @if map.has-key($breakpoints, $size) {
+    @media (min-width: map.get($breakpoints, $size)) {
+      @content;
+    }
+  } @else {
+    @error "Breakpoint « #{$size} » non trouvé dans $breakpoints.";
+  }
+}
+
+/// Mixin media query entre deux breakpoints
+/// @param {String} $min-size
+/// @param {String} $max-size
+@mixin breakpoint-between($min-size, $max-size) {
+  @if map.has-key($breakpoints, $min-size) and map.has-key($breakpoints, $max-size) {
+    @media (min-width: map.get($breakpoints, $min-size)) and (max-width: calc(map.get($breakpoints, $max-size) - 1px)) {
+      @content;
+    }
+  } @else {
+    @error "Un des breakpoints est introuvable.";
+  }
+}

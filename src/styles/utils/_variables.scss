@@ -1,0 +1,42 @@
+// font-family variable
+$font-family-text: 'Montserrat', sans-serif;
+$font-size-default: 16px;
+
+// font-weight
+$font-weight-bold: 700;
+$font-weight-semi-bold: 500;
+$font-weight-normal: 300;
+$font-weight-light: 100;
+
+//color
+$pink-light-color: #ff79da;
+$pink-dark-color: #9356dc;
+$green-light-color: #99e2d0;
+$green-dark-color: #008766;
+$blue-light-color: #89c8fa;
+$blue-dark-color: #003a68;
+$grey-light-color: #eaeaea;
+$grey-dark-color: #353535;
+$text-color: #000000;
+$bg-color: #f6f6f6;
+$icon-color: #7e7e7e;
+$white: #ffffff;
+
+// border-radius
+$radius-xs: 2px;
+$radius-lg: 20px;
+$radius-md: 15px;
+$radius-xl: 25px;
+
+//breakpoints
+$breakpoints: (
+  'sm': 576px,
+  // Small (tablette)
+  'md': 768px,
+  // Medium (tablette large)
+  'lg': 992px,
+  // Large (desktop)
+  'xl': 1200px,
+  // Extra Large (desktop large)
+  'xxl': 1400px, // Extra Extra Large (4K)
+);
