@@ -1,3 +1,7 @@
+@use './utils/variables' as *;
+
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: $font-family-text, sans-serif;
+  margin: 0;
+  padding: 0;
 }
