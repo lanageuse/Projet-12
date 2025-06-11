@@ -4,12 +4,14 @@
   margin-right: auto;
   padding-left: rem(20);
   padding-right: rem(20);
+  margin-bottom: rem(43);
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: rem(50);
+  gap: rem(22);
   @include breakpoint('lg') {
     max-width: 1240px;
     padding: 0;
+    gap: rem(43);
   }
 }
