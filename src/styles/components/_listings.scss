@@ -1,0 +1,8 @@
+@use '../utils/setup' as *;
+.listings {
+  @include breakpoint('lg') {
+    border-radius: $radius-xl;
+    background-color: $grey-light-color;
+    padding: rem(56) rem(50) rem(43) rem(50);
+  }
+}
