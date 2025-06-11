@@ -1,7 +1,7 @@
 @use '../utils/setup' as *;
 .banner {
   position: relative;
-  border-radius: $radius-xl;
+  border-radius: $radius-md;
   background-image: url(../../assets/bg-banner.webp);
   background-position: center center;
   object-fit: cover;
@@ -29,6 +29,7 @@
 @include breakpoint('lg') {
   .banner {
     padding: rem(45);
+    border-radius: $radius-xl;
     h1 {
       font-size: rem(48);
       text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
