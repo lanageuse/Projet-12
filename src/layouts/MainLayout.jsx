@@ -3,13 +3,13 @@ import Footer from '../components/Footer.jsx'
 import Header from '../components/Header.jsx'
 function MainLayout() {
     return (
-        <div>
-        <Header/>
-            <main>
+        <>
+            <Header />
+            <main className='main-container'>
                 <Outlet />
             </main>
             <Footer />
-        </div>
+        </>
     )
 }
 
