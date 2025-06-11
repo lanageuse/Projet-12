@@ -1,7 +1,17 @@
 @use './layouts/main-layout';
+
 @use './components/header';
 @use './components/footer';
 @use './components/banner';
+@use './components/listingsGrid';
+@use './components/listings';
+@use './components/listing';
+@use './components/caroussel';
+@use './components/title';
+@use './components/host';
+@use './components/rate';
+@use './components/tags';
+@use './components/details';
 
 *,
 *::before,
