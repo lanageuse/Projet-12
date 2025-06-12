@@ -1,5 +1,5 @@
 import Banner from "../components/Banner"
-import Listings from "../components/Listings"
+import Listings from "../components/Listing/Listings"
 
 function Home() {
     return (
