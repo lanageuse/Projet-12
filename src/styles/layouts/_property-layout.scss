@@ -1,0 +1,27 @@
+@use '../utils/setup' as *;
+
+.infos-container {
+  display: flex;
+  flex-direction: column;
+  gap: rem(20);
+  justify-content: space-between;
+  @include breakpoint('lg') {
+    flex-direction: row;
+  }
+}
+
+.title-tags {
+  display: flex;
+  flex-direction: column;
+  gap: rem(20);
+}
+
+.host-rate {
+  display: flex;
+  gap: rem(20);
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  @include breakpoint('lg') {
+    flex-direction: column;
+  }
+}

@@ -25,12 +25,12 @@ function Property() {
 
     return (
         <PropertyLayout
-            hero={<Hero pictures={property.pictures} />}
-            title={<Title title={property.title} location={property.location} />}
-            tags={<Tags tags={property.tags} />}
-            host={<Host title={property.host} />}
-            rate={<Rate title={property.rate} />}
-            details={<Details description={property.description} equipments={property.equipments} />}
+            Hero={<Hero pictures={property.pictures} />}
+            Title={<Title title={property.title} location={property.location} />}
+            Tags={<Tags tags={property.tags} />}
+            Host={<Host host={property.host} />}
+            Rate={<Rate rate={property.rating} />}
+            Details={<Details description={property.description} equipments={property.equipments} />}
         />
     )
 }
