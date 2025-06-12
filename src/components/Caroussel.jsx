@@ -25,19 +25,19 @@ function Caroussel({ children }) {
     return (
         <div className="carousel-container">
             <div className="carousel-wrapper">
-                <button className="left-arrow" onClick={prev}>
+                {length > 1 ? <button className="left-arrow" onClick={prev}>
                     <img src={arrowLeft} alt="précédent" />
-                </button>
-
+                </button> : ''}
                 <div className="carousel-content-wrapper">
                     <div className="carousel-content" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                         {children}
                     </div>
                 </div>
-                <button className="right-arrow" onClick={next}>
+                {length > 1 ? <button className="right-arrow" onClick={next}>
                     <img src={arrowRight} alt="suivant" />
-                </button>
-                <div className='current-state'>{`${currentIndex + 1} / ${length}`}</div>
+                </button> : ''}
+
+                {length > 1 ? <div className='current-state'>{`${currentIndex + 1} / ${length}`}</div> : ''}
             </div>
         </div>
     )
