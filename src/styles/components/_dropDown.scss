@@ -1,0 +1,57 @@
+@use '../utils/setup' as *;
+.dropdown-container {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.dropdown-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: rem(10);
+  background: $pink-light-color;
+  border-radius: $radius-xs;
+  color: $white;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  @include breakpoint('lg') {
+    padding: rem(16);
+  }
+}
+
+.btn-arrow {
+  background: transparent;
+  border: 0;
+}
+.arrow {
+  transition: transform ease-in-out 0.3s;
+  &.arrow-up {
+    transform: rotate(180deg);
+  }
+}
+.dropdown-content {
+  position: relative;
+  height: 100%;
+  background: $bg-dropdown-content;
+  font-size: rem(12);
+  padding: rem(20);
+  opacity: 0;
+  transition: opacity ease-in 0.8s;
+  display: none;
+  @include breakpoint('lg') {
+    font-size: rem(18);
+  }
+  &.active {
+    opacity: 1;
+    display: block;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      margin: rem(10);
+    }
+  }
+}
