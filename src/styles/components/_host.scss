@@ -1,0 +1,28 @@
+@use '../utils/setup' as *;
+.host {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: rem(10);
+}
+.picture {
+  img {
+    width: rem(32);
+    height: rem(32);
+    border-radius: 100px;
+    @include breakpoint('lg') {
+      width: rem(64);
+      height: rem(64);
+    }
+  }
+}
+.name {
+  color: $pink-light-color;
+  font-weight: $font-weight-semi-bold;
+  font-size: rem(12);
+  text-align: right;
+  @include breakpoint('lg') {
+    font-size: rem(18);
+  }
+}
