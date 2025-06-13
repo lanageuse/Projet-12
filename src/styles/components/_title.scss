@@ -1,0 +1,21 @@
+@use '../utils/setup' as *;
+.title-container {
+  .h1 {
+    color: $pink-light-color;
+    font-weight: $font-weight-semi-bold;
+    font-size: rem(18);
+    margin: 0;
+    @include breakpoint('lg') {
+      font-size: rem(36);
+    }
+  }
+  .h2 {
+    color: $text-color;
+    font-weight: $font-weight-semi-bold;
+    font-size: rem(14);
+    margin: 0;
+  }
+  @include breakpoint('lg') {
+    font-size: rem(18);
+  }
+}
