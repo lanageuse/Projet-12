@@ -1,0 +1,19 @@
+@use '../utils/setup' as *;
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(10);
+}
+.tag {
+  background: $pink-light-color;
+  color: $white;
+  font-size: rem(10);
+  font-weight: $font-weight-bold;
+  border-radius: $radius-xs;
+  padding: rem(5) rem(29);
+  @include breakpoint('lg') {
+    border-radius: $radius-md;
+    font-size: rem(14);
+    padding: rem(5) rem(45);
+  }
+}
