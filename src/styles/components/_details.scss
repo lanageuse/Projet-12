@@ -1,0 +1,14 @@
+@use '../utils/setup' as *;
+.details-container {
+  display: flex;
+  flex-direction: column;
+  gap: rem(20);
+  flex-grow: 2;
+  @include breakpoint('lg') {
+    flex-direction: row;
+    gap: rem(76);
+  }
+  > div {
+    flex: 1;
+  }
+}
