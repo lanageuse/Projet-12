@@ -1,0 +1,13 @@
+@use '../utils/setup' as *;
+.rate-container {
+  display: flex;
+  gap: rem(4);
+}
+.star {
+  width: 13px;
+  height: 13px;
+  @include breakpoint('lg') {
+    width: 24px;
+    height: 24px;
+  }
+}
