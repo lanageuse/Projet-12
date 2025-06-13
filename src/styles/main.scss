@@ -1,4 +1,5 @@
 @use './layouts/main-layout';
+@use './layouts/property-layout';
 
 @use './components/header';
 @use './components/footer';
@@ -12,6 +13,7 @@
 @use './components/rate';
 @use './components/tags';
 @use './components/details';
+@use './components/dropDown';
 
 *,
 *::before,
