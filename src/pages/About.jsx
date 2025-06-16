@@ -1,17 +1,22 @@
 import useAbout from "../hook/useAbout"
-import DropDown from '../components/DropDown'
 import Banner from "../components/Banner"
 import AboutLayout from "../layouts/AboutLayout"
 import bgImage from '../assets/bg-about.webp';
+import ErrorMessage from '../components/ErrorMessage'
 
 
 function About() {
-    const { aboutList, loading } = useAbout()
+    const { aboutList, loading, error } = useAbout()
     return (
-        <AboutLayout
-            banner={<Banner title="" bckImg={bgImage} />}
-            dropDownList={{ aboutList, loading }}
-        />
+        <>
+            <ErrorMessage error={error} />
+            {!error &&
+                <AboutLayout
+                    banner={< Banner title="" bckImg={bgImage} />}
+                    dropDownList={{ aboutList, loading }}
+                />
+            }
+        </>
     )
 }
 
