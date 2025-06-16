@@ -1,0 +1,13 @@
+@use '../utils/setup' as *;
+
+.spinner-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    max-width: rem(100);
+  }
+}
