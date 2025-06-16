@@ -1,8 +1,7 @@
-import bgImage from '../assets/bg-banner.webp';
-function Banner() {
+function Banner({ title, bckImg }) {
     return (
-        <section className="banner" style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover' }}>
-            <h1>Chez vous, <br />partout et ailleurs</h1>
+        <section className="banner" style={{ backgroundImage: `url(${bckImg})`, backgroundSize: 'cover' }}>
+            <h1>{title}</h1>
         </section>
     )
 }
