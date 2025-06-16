@@ -1,0 +1,33 @@
+@use '../utils/setup' as *;
+.notFound-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: rem(139);
+  .title {
+    font-size: rem(96);
+    font-weight: $font-weight-bold;
+    color: $pink-light-color;
+  }
+  .content {
+    font-size: rem(18);
+    color: $pink-light-color;
+  }
+  .link a {
+    color: $text-color;
+    font-size: rem(14);
+  }
+  @include breakpoint('lg') {
+    .title {
+      font-size: rem(288);
+    }
+    .content {
+      font-size: rem(36);
+    }
+    .link a {
+      font-size: rem(18);
+      font-weight: $font-weight-semi-bold;
+    }
+  }
+}
