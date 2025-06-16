@@ -1,0 +1,7 @@
+@use '../utils/setup' as *;
+.error-container {
+  background: #b32e2e;
+  color: $white;
+  padding: rem(10);
+  border-radius: $radius-md;
+}
