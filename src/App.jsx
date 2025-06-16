@@ -1,8 +1,11 @@
 import { RouterProvider } from 'react-router'
 import router from './routes'
+import { ListingsProvider } from './context/ListingsContext'
 function App() {
   return (
-    <RouterProvider router={router} />
+    <ListingsProvider>
+      <RouterProvider router={router} />
+    </ListingsProvider>
   )
 }
 

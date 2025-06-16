@@ -1,12 +1,13 @@
 import ListingsGrid from "./ListingsGrid"
-import useListings from '../../hook/useListings'
+import { useListings } from '../../context/ListingsContext'
 import Listing from "./Listing"
+import { Suspense } from "react"
 function Listings() {
-    const listings = useListings()
-    if (!listings) return
+    const { listings, loading } = useListings()
+    if (loading) return 'Chargement....'
     return (
         <div className="listings">
-            <ListingsGrid>
+            <ListingsGrid fallback="Chargement...">
                 {listings.map((listing, index) => (
                     <Listing key={index} listing={listing} />
                 )
