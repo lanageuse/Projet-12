@@ -1,0 +1,21 @@
+@use '../utils/setup' as *;
+
+.about-container,
+.dropDownList-container {
+  display: flex;
+  flex-direction: column;
+  gap: rem(20);
+}
+
+@include breakpoint('lg') {
+  .about-container {
+    gap: rem(36);
+  }
+  .dropDownList-container {
+    gap: rem(30);
+    padding: 0 rem(108);
+    .dropdown-title {
+      font-size: rem(24);
+    }
+  }
+}
