@@ -1,6 +1,6 @@
-import { useParams } from "react-router";
-import useListings from '../hook/useListings'
-import { useEffect, useState } from "react"
+import { useParams, useNavigate } from "react-router";
+import useProperty from '../hook/useProperty'
+import { useEffect } from "react"
 import Details from "../components/Property/Details"
 import Host from "../components/Property/Host"
 import Rate from "../components/Property/Rate"
@@ -10,16 +10,15 @@ import PropertyLayout from "../layouts/PropertyLayout"
 import Hero from "../components/Property/Hero";
 
 function Property() {
-    const [property, setProperty] = useState(null)
     const { id: paramId } = useParams()
-    const listings = useListings()
+    const navigate = useNavigate();
+    const { property, loading } = useProperty(paramId)
 
     useEffect(() => {
-        if (Array.isArray(listings) && listings.length > 0 && paramId) {
-            const found = listings.find((prop) => prop?.id === paramId)
-            setProperty(found || null)
+        if (!loading && property === null) {
+            navigate("/404", { replace: true })
         }
-    }, [listings, paramId])
+    }, [navigate, property, loading])
 
     if (!property) return (<p>Chargement ...</p>)
 
