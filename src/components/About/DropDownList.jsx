@@ -6,8 +6,8 @@ function DropDownList({ dropDownList }) {
     return (
         <>
             {
-                aboutList.map(drop => (
-                    <DropDown title={drop.title} content={drop.content} />
+                aboutList.map((drop, index) => (
+                    <DropDown key={index} title={drop.title} content={drop.content} />
                 )
                 )
             }
