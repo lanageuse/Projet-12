@@ -1,14 +1,16 @@
+import { Suspense, lazy } from 'react'
 import { createBrowserRouter } from 'react-router'
-import MainLayout from './layouts/MainLayout'
-import Home from './pages/Home'
-import About from './pages/About'
-import NotFound from './pages/NotFound'
-import Property from './pages/Property'
+const MainLayout = lazy(() => import('./layouts/MainLayout'))
+const Home = lazy(() => import('./pages/Home'))
+const About = lazy(() => import('./pages/About'))
+const NotFound = lazy(() => import('./pages/NotFound'))
+const Property = lazy(() => import('./pages/Property'))
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <MainLayout />,
+    element: <Suspense fallback="loading...."><MainLayout /></Suspense>,
+    errorElement: <NotFound />,
     children: [
       {
         index: true,
@@ -23,8 +25,8 @@ const router = createBrowserRouter([
         element: <NotFound />
       },
       {
-        path : "/property/:id", 
-        element : <Property />
+        path: "/property/:id",
+        element: <Property />
       }
     ]
   }
