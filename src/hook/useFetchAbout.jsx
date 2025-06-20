@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function useAbout() {
+function useFetchAbout() {
     const [aboutList, setAboutList] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState("")
@@ -30,4 +30,4 @@ function useAbout() {
     return { aboutList, loading }
 }
 
-export default useAbout
+export default useFetchAbout
