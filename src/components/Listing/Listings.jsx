@@ -4,12 +4,12 @@ import Listing from "./Listing"
 import ErrorMessage from "../ErrorMessage"
 
 function Listings() {
-    const { listings, loading, error } = useListings()
-    if (loading) return '<p>Chargement...</p>'
+    const { listings, status, error } = useListings()
+    if (status === "fetching") return '<p>Chargement...</p>'
 
     return (
         <div className="listings">
-            <ErrorMessage error={error.message} />
+            <ErrorMessage error={error} />
             {!error &&
                 <ListingsGrid ListingsGrid fallback="Chargement...">
                     {listings.map((listing, index) => (
