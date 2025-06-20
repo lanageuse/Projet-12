@@ -1,9 +1,10 @@
 import { useListings } from "../context/ListingsContext"
 
 function useProperty(id) {
-    const { listings, loading } = useListings()
+    const { listings, status } = useListings()
     const property = listings.find(prop => prop.id === id) || null;
-    return { property, loading };
+    console.log(property, status);
+    return { property, status };
 }
 
 export default useProperty
