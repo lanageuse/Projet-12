@@ -2,7 +2,7 @@ import { useContext, createContext, useState, useEffect } from "react";
 
 const ListingsContext = createContext()
 
-export function ListingsProvider({ children }) {
+export function ListingsProvider({ children, props }) {
     const [listings, setListings] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState("");
@@ -29,17 +29,19 @@ export function ListingsProvider({ children }) {
         return () => {
             isMounted = false
         }
-    }, [error])
-
-
+    }, [error, loading, listings])
 
     return (
-        <ListingsContext.Provider value={{ listings, loading, error }}>
+        <ListingsContext.Provider value={{ listings, loading, error }} {...props}>
             {children}
         </ListingsContext.Provider>
     );
 }
 
 export function useListings() {
-    return useContext(ListingsContext)
+    const context = useContext(ListingsContext)
+    if (!context) {
+        throw new Error("ListingsContext n'est pas accessible dans ce composant")
+    }
+    return context;
 }
