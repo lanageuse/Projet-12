@@ -1,38 +1,11 @@
-import { useContext, createContext, useState, useEffect } from "react";
+import { useContext, createContext } from "react";
+import useFetchData from "../hook/useFetchData";
 
 const ListingsContext = createContext()
-
-export function ListingsProvider({ children, props }) {
-    const [listings, setListings] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState("");
-
-    useEffect(() => {
-        let isMounted = true
-        const fetchData = async () => {
-            try {
-                const res = await fetch("../data/properties.json");
-                if (!res.ok) throw new error("Erreur serveur");
-                const data = await res.json()
-                if (isMounted) {
-                    setListings(data.listings)
-                    setLoading(false)
-                }
-            } catch (err) {
-                if (isMounted) {
-                    setError(err);
-                    setLoading(false);
-                }
-            }
-        }
-        fetchData()
-        return () => {
-            isMounted = false
-        }
-    }, [error, loading, listings])
-
+export function ListingsProvider({ children }) {
+    const { listings, error, status } = useFetchData()
     return (
-        <ListingsContext.Provider value={{ listings, loading, error }} {...props}>
+        <ListingsContext.Provider value={{ listings, error, status }}>
             {children}
         </ListingsContext.Provider>
     );
