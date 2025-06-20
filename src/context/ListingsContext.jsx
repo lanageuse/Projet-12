@@ -1,9 +1,9 @@
 import { useContext, createContext } from "react";
-import useFetchData from "../hook/useFetchData";
+import useFetchListings from "../hook/useFetchListings";
 
 const ListingsContext = createContext()
 export function ListingsProvider({ children }) {
-    const { listings, error, status } = useFetchData()
+    const { listings, error, status } = useFetchListings()
     return (
         <ListingsContext.Provider value={{ listings, error, status }}>
             {children}

@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from "react";
-import listingsReducer from '../hook/reducers/listingsReducer'
-function useFetchData() {
+import listingsReducer from './reducers/listingsReducer'
+function useFetchListings() {
     const [state, dispatch] = useReducer(listingsReducer, {
         listings: null,
         error: null,
@@ -30,4 +30,4 @@ function useFetchData() {
     return state
 }
 
-export default useFetchData
+export default useFetchListings
