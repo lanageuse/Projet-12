@@ -12,13 +12,13 @@ import Hero from "../components/Property/Hero";
 function Property() {
     const { id: paramId } = useParams()
     const navigate = useNavigate();
-    const { property, loading } = useProperty(paramId)
+    const { property, status } = useProperty(paramId)
 
     useEffect(() => {
-        if (!loading && property === null) {
+        if (!status === "done" && property === null) {
             navigate("/404", { replace: true })
         }
-    }, [navigate, property, loading])
+    }, [navigate, property, status])
 
     if (!property) return (<p>Chargement ...</p>)
 
