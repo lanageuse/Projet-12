@@ -3,7 +3,7 @@ import listingsReducer from './reducers/listingsReducer'
 function useFetchListings() {
     const cache = useRef(null);
     const [state, dispatch] = useReducer(listingsReducer, {
-        listings: null,
+        listings: [],
         error: null,
         status: "idle",
     })
@@ -19,10 +19,10 @@ function useFetchListings() {
             }
             dispatch({ type: "fetching" })
             try {
-                const res = await fetch("../data/properties.json");
+                const res = await fetch("/data/properties.json");
                 if (!res.ok) throw new Error("Erreur serveur");
                 const data = await res.json()
-                cache.current = data.listings
+                cache.current = data.listings || []
                 dispatch({
                     type: "done",
                     payload: data.listings
