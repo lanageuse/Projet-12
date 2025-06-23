@@ -1,7 +1,6 @@
-import { useEffect, useReducer, useRef } from "react";
+import { useEffect, useReducer } from "react";
 import listingsReducer from './reducers/listingsReducer'
 function useFetchListings() {
-    const cache = useRef(null);
     const [state, dispatch] = useReducer(listingsReducer, {
         listings: [],
         error: null,
@@ -10,10 +9,11 @@ function useFetchListings() {
 
     useEffect(() => {
         const fetchData = async () => {
-            if (cache.current) {
+            const cached = localStorage.getItem("listings")
+            if (cached) {
                 dispatch({
                     type: "done",
-                    payload: cache.current
+                    payload: JSON.parse(cached)
                 })
                 return;
             }
@@ -22,7 +22,7 @@ function useFetchListings() {
                 const res = await fetch("/data/properties.json");
                 if (!res.ok) throw new Error("Erreur serveur");
                 const data = await res.json()
-                cache.current = data.listings || []
+                localStorage.setItem("listings", JSON.stringify(data.listings))
                 dispatch({
                     type: "done",
                     payload: data.listings
