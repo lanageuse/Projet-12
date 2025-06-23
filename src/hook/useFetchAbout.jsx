@@ -1,8 +1,7 @@
-import { useEffect, useReducer, useRef } from "react";
+import { useEffect, useReducer } from "react";
 import aboutReducer from './reducers/aboutReducer'
 
 function useFetchAbout() {
-    const cache = useRef(null);
     const [state, dispatch] = useReducer(aboutReducer, {
         data: [],
         error: null,
@@ -11,10 +10,12 @@ function useFetchAbout() {
 
     useEffect(() => {
         const fetchData = async () => {
-            if (cache.current) {
+            const cached = localStorage.getItem("about");
+            if (cached) {
+                console.log("cached")
                 dispatch({
                     type: "done",
-                    payload: cache.current
+                    payload: JSON.parse(cached),
                 })
                 return;
             }
@@ -23,7 +24,7 @@ function useFetchAbout() {
                 const res = await fetch("/data/about.json");
                 if (!res.ok) throw new Error("Erreur serveur");
                 const data = await res.json()
-                cache.current = data.aboutList
+                localStorage.setItem("about", JSON.stringify(data.aboutList))
                 dispatch({
                     type: "done",
                     payload: data.aboutList || []
