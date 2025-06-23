@@ -1,16 +1,18 @@
 import DropDown from "../DropDown"
+import ErrorMessage from "../ErrorMessage";
+import Loading from "../Loading";
 
 function DropDownList({ dropDownList }) {
-    const { aboutList, loading } = dropDownList
-    if (!aboutList && loading) return 'Chargement...'
+    const { data, status, error } = dropDownList;
+
+    if (status === "fetching") return <Loading />;
+    if (status === "fail") return <ErrorMessage error={error} />;
+
     return (
         <>
-            {
-                aboutList.map((drop, index) => (
-                    <DropDown key={index} title={drop.title} content={drop.content} />
-                )
-                )
-            }
+            {data.map((drop, index) => (
+                <DropDown key={index} title={drop.title} content={drop.content} />
+            ))}
         </>
     );
 }
