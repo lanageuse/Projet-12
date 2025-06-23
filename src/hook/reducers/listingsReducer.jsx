@@ -1,6 +1,5 @@
 
 function listingsReducer(state, action) {
-    console.log(action.type);
     switch (action.type) {
         case "fetching":
             return { status: "fetching", listings: null, error: null }
