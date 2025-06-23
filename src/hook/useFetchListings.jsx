@@ -1,19 +1,28 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useRef } from "react";
 import listingsReducer from './reducers/listingsReducer'
 function useFetchListings() {
+    const cache = useRef(null);
     const [state, dispatch] = useReducer(listingsReducer, {
         listings: null,
         error: null,
-        status: "fetching",
+        status: "idle",
     })
 
     useEffect(() => {
         const fetchData = async () => {
-            dispatch({ type: "fecthing" })
+            if (cache.current) {
+                dispatch({
+                    type: "done",
+                    payload: cache.current
+                })
+                return;
+            }
+            dispatch({ type: "fetching" })
             try {
                 const res = await fetch("../data/properties.json");
                 if (!res.ok) throw new Error("Erreur serveur");
                 const data = await res.json()
+                cache.current = data.listings
                 dispatch({
                     type: "done",
                     payload: data.listings
