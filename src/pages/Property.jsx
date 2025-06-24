@@ -20,7 +20,7 @@ function Property() {
         }
     }, [navigate, property, status])
 
-    if (!property) return (<p>Chargement ...</p>)
+    if (!property && status === "fetching") return (<p>Chargement ...</p>)
 
     return (
         <PropertyLayout
