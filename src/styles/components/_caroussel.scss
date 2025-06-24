@@ -51,27 +51,54 @@
   z-index: 1;
   top: 50%;
   transform: translateY(-50%);
-  width: rem(80);
-  height: rem(80);
+  width: rem(20);
+  height: rem(20);
   background: transparent;
   border: 0;
   cursor: pointer;
+  svg {
+    width: rem(20);
+    height: rem(20);
+  }
 }
 
 .left-arrow {
-  left: rem(24);
+  left: rem(8);
 }
 
 .right-arrow {
-  right: rem(24);
+  right: rem(8);
 }
 
 .current-state {
-  position: absolute;
-  width: 100%;
-  bottom: rem(20);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $white;
+  display: none;
+}
+
+@include breakpoint('lg') {
+  .left-arrow,
+  .right-arrow {
+    width: rem(80);
+    height: rem(80);
+    svg {
+      width: rem(80);
+      height: rem(80);
+    }
+  }
+  .left-arrow {
+    left: rem(24);
+  }
+
+  .right-arrow {
+    right: rem(24);
+  }
+  .current-state {
+    display: block;
+    position: absolute;
+    width: 100%;
+    bottom: rem(20);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+  }
 }
