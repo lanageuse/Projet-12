@@ -15,19 +15,22 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
+        element: <Suspense fallback={<Loading />}><Home /></Suspense>,
+        errorElement: <NotFound />,
       },
       {
         path: 'about',
-        element: <About />
+        element: <Suspense fallback={<Loading />}><About /></Suspense>,
+        errorElement: <NotFound />,
       },
       {
         path: '*',
-        element: <NotFound />
+        element: <Suspense fallback={<Loading />}><NotFound /></Suspense>,
       },
       {
         path: "/property/:id",
-        element: <Property />
+        element: <Suspense fallback={<Loading />}><Property /></Suspense>,
+        errorElement: <NotFound />,
       }
     ]
   }
