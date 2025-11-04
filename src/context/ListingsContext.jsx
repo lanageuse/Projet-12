@@ -1,8 +1,8 @@
-import { useContext, createContext } from 'react';
+import { createContext } from 'react';
 import useFetchListings from '../hooks/useFetchListings';
 
 const ListingsContext = createContext();
-export function ListingsProvider({ children }) {
+function ListingsProvider({ children }) {
   const { listings, error, status } = useFetchListings();
   return (
     <ListingsContext.Provider value={{ listings, error, status }}>
@@ -11,10 +11,4 @@ export function ListingsProvider({ children }) {
   );
 }
 
-export function useListings() {
-  const context = useContext(ListingsContext);
-  if (!context) {
-    throw new Error("ListingsContext n'est pas accessible dans ce composant");
-  }
-  return context;
-}
+export { ListingsContext, ListingsProvider };
